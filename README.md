@@ -125,7 +125,20 @@ This documentation is split into parts that help you through the process
 ```
 make -C examples-api-use
 sudo examples-api-use/demo -D0
-./demo -D 4 --led-rows=64 --led-cols=64 --led-gpio-mapping=adafruit-hat --led-slowdown-gpio=1
+
+Demo
+sudo ./demo -D 0 --led-rows=64 --led-cols=64 --led-gpio-mapping=adafruit-hat --led-slowdown-gpio=4 --led-brightness=50 isolcpus=3
+
+Text Scroller
+sudo ./text-scroller -f ../fonts/9x18.bdf -O10,10,10 -C255,0,255,0 --led-rows=64 --led-cols=64 --led-gpio-mapping=adafruit-hat --led-slowdown-gpio=4 --led-brightness=50 isolcpus=3 "Hello World ♥"
+
+Large Text + Center
+sudo ./text-scroller -f ../fonts/texgyre-27.bdf -O0,10,10,10 -C255,0,255,0  --led-rows=64 --led-cols=64 --led-gpio-mapping=adafruit-hat --led-slowdown-gpio=4 --led-brightness=100 -y+6 -s0 "Hello World ♥"
+
+sudo ./demo -D 0 --led-rows=64 --led-cols=64 --led-gpio-mapping=adafruit-hat --led-slowdown-gpio=4 --led-brightness=50 isolcpus=3
+
+sudo ./demo -D 0 --led-rows=64 --led-cols=64 --led-gpio-mapping=adafruit-hat --led-slowdown-gpio=4 --led-brightness=50 isolcpus=3
+
 ```
 
 3. Use the utilities. The [utils](./utils) directory has some ready-made
@@ -712,7 +725,7 @@ as non-root is not recommended.
 These displays need to be updated constantly to show an image with PWMed
 LEDs. This is dependent on the length of the chain: for each chain element,
 about 1'000'000 write operations have to happen every second!
-(chain_length _ 32 pixel long _ 16 rows _ 11 bit planes _ 180 Hz refresh rate).
+(chain*length * 32 pixel long _ 16 rows _ 11 bit planes \_ 180 Hz refresh rate).
 
 We can't use hardware support for writing these as DMA is too slow,
 thus the constant CPU use on an RPi is roughly 30-40% of one core.
