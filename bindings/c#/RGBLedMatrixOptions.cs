@@ -15,7 +15,7 @@ public struct RGBLedMatrixOptions
     /// The "rows" are the number of rows supported by the display, so 32 or 16.
     /// Default: 32.
     /// </summary>
-    public int Rows = 32;
+    public int Rows = 64;
 
     /// <summary>
     /// The "cols" are the number of columns per panel. Typically something
@@ -24,7 +24,7 @@ public struct RGBLedMatrixOptions
     /// represent a 64 wide display as cols=32, chain=2 or cols=64, chain=1;
     /// same thing, but more convenient to think of.
     /// </summary>
-    public int Cols = 32;
+    public int Cols = 64;
 
     /// <summary>
     /// The chain_length is the number of displays daisy-chained together
@@ -115,7 +115,7 @@ public struct RGBLedMatrixOptions
     /// <summary>
     /// Slowdown GPIO. Needed for faster Pis/slower panels.
     /// </summary>
-    public int GpioSlowdown = 1;
+    public int GpioSlowdown = 4;
 
     /// <summary>
     /// Creates default matrix settings.
